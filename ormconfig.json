@@ -1,0 +1,9 @@
+{
+    "type" : "postgres",
+    "host" : "rajje.db.elephantsql.com",
+    "port" : 5432,
+    "username" : "leqtaprp",
+    "password" : "LCzaaHWLC3CpJh-IcMfWoZ9evPcSC9TW",
+    "database" : "leqtaprp",
+    "entities": ["dist/**/*.entity.js"]
+}
