@@ -1,0 +1,19 @@
+create table planes(
+	id serial primary key,
+    
+    name varchar(100) unique,
+    
+    minInvest numeric,
+
+    maxInvest numeric,
+
+    monthlyRate numeric,
+
+    duration int
+)
+monthlyRate
+create table rendimientos(
+	id serial primary key,
+    amount numeric,
+	planId int references planes(id)
+)

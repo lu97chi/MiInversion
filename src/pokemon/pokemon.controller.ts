@@ -1,5 +1,5 @@
 import { Controller, Post } from '@nestjs/common';
-import { Crud, CrudController } from '@nestjsx/crud';
+import { Crud } from '@nestjsx/crud';
 import { PokemonService } from './pokemon.service';
 import { PokemonEntity } from './pokemon.entity';
 
