@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { Crud } from '@nestjsx/crud';
 import { PlanesService } from './planes.service';
 import { PlanesEntity } from './planes.entity';
@@ -11,5 +11,10 @@ import { PlanesEntity } from './planes.entity';
 
 @Controller('planes')
 export class PlanesController {
-    constructor(public service: PlanesService){}
+    constructor(private service: PlanesService){}
+
+    @Get('usuario/:agenteId')
+    planesUsuario(@Param('agenteId') agenteId: number) {
+        return this.service.planesUsuario(agenteId)
+    }
 }

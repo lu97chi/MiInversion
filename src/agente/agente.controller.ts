@@ -1,6 +1,5 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { AgenteService } from './agente.service';
-import { AgenteEntity } from './agente.entity';
 
 
 @Controller('agente')

@@ -1,7 +1,7 @@
 import { 
     Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn
 } from 'typeorm';
-import { RendimientoEntity } from 'src/rendimiento/rendimiento.entity';
+// import { RendimientoEntity } from 'src/rendimiento/rendimiento.entity';
 
 @Entity('planes')
 export class PlanesEntity {
@@ -9,7 +9,6 @@ export class PlanesEntity {
     
     @Column('varchar', { length: 100, unique : true}) 
     name: string
-
 
     @Column({type: 'decimal', precision: 14, scale: 3})
     mininvest: number
@@ -22,6 +21,12 @@ export class PlanesEntity {
 
     @Column('int')
     duration: number
+
+    @Column('int')
+    agenteid: number
+
+    @Column('boolean')
+    isinitialplan: boolean
 
     // @OneToMany(type  => RendimientoEntity, rendimiento => rendimiento.id)
     // @JoinColumn()

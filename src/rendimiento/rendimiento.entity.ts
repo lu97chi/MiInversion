@@ -13,5 +13,8 @@ export class RendimientoEntity {
     // @ManyToOne(type  => PlanesEntity, planes => planes.id)
     // @JoinColumn()
     @Column('int')
-    planid: PlanesEntity
+    planid: number
+
+    @Column('int')
+    clienteid: number
 }
