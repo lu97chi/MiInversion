@@ -4,38 +4,47 @@ import { genSaltSync, hashSync, compare } from 'bcryptjs';
 
 import { AgenteEntity } from './agente.entity';
 import { getRepository } from 'typeorm';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AgenteService {
-    constructor(@InjectRepository(AgenteEntity) repo) {}
+    constructor(
+        @InjectRepository(AgenteEntity) repo,
+        private readonly jwtService: JwtService
+    ) {}
 
     async login(username: string, password: string) {
         if (!username || !password) {
-            throw new BadRequestException("Ingrese todos los datos")
+            return {success: false, response : "Ingrese todos los datos"}
         }
         const user = await getRepository(AgenteEntity)
             .createQueryBuilder('agente')
             .where("agente.username = :username", { username })
             .getOne()
         if (!user) {
-            throw new BadRequestException("No se encontro el usuario buscado")
+            return {success: false, response : "No se encontro el usuario buscado"}
         } else {
             const isUser = await compare(password, user.password);
-            if (isUser) return { success: true, response: 'Agente autenticado'}
-            throw new BadRequestException("Contraseña incorrecta")
+            const { firstname, id, lastname, username } = user;
+            if (isUser) return { success: true, response: {
+                message: 'Acceso correcto',
+                data: { firstname, lastname, username }, 
+                access_token: this.jwtService.sign({firstname, id, lastname, username})
+            } }
+            return {success: false, response : "Contraseña incorrecta"}
         }
     }
 
     async register(username: string, password: string, firstname: string, lastname: string) {
         if (!username || !password || !firstname || !lastname) {
-            throw new BadRequestException("Ingrese todos los datos")
+            return {success: false, response : "Ingrese todos los datos"}
         }
         const usernameRequest = await getRepository(AgenteEntity)
             .createQueryBuilder('agentes')
             .where("agentes.username = :username", { username })
             .getOne()
         if (usernameRequest) {
-            throw new BadRequestException("Nombre de usuario ya elegido, seleccione otro");
+            return {success: false, response : "Nombre de usuario ya elegido, seleccione otro"};
         } else {
             const salt = genSaltSync(10);
             const hashedPassword = hashSync(password, salt);
@@ -44,7 +53,7 @@ export class AgenteService {
                 .insert()
                 .values({ firstname, lastname , username , password: hashedPassword })
                 .execute()
-            return {success: true, response: 'Agente creado'}
+            return {success: true, response: { message: 'Agente creado'}}
         }
     }
 }
