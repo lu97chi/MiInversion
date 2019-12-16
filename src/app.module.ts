@@ -13,7 +13,7 @@ import { ClientesModule } from './cliente/cliente.module';
 @Module({
   imports: [ 
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'build'),   // <-- path to the static files
+      rootPath: join(__dirname, '..', 'public'),   // <-- path to the static files
     }),
     TypeOrmModule.forRoot(), PokemonModule, PlanesModule, RedimientoModule, AgenteModule, ClientesModule ],
   controllers: [AppController],
