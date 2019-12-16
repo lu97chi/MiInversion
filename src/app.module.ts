@@ -11,11 +11,17 @@ import { RedimientoModule } from './rendimiento/rendimiento.module';
 import { ClientesModule } from './cliente/cliente.module';
 
 @Module({
-  imports: [ 
+  imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public'),   // <-- path to the static files
+      rootPath: join(__dirname, '..', 'public'), // <-- path to the static files
     }),
-    TypeOrmModule.forRoot(), PokemonModule, PlanesModule, RedimientoModule, AgenteModule, ClientesModule ],
+    TypeOrmModule.forRoot(),
+    PokemonModule,
+    PlanesModule,
+    RedimientoModule,
+    AgenteModule,
+    ClientesModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

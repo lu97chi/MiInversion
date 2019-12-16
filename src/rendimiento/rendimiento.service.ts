@@ -8,14 +8,14 @@ import { PlanesEntity } from 'src/planes/planes.entity';
 
 @Injectable()
 export class RendimientoService extends TypeOrmCrudService<RendimientoEntity> {
-    constructor(@InjectRepository(RendimientoEntity) repo) {
-        super(repo)
-    }
+  constructor(@InjectRepository(RendimientoEntity) repo) {
+    super(repo);
+  }
 
-    async getUsuarios() {
-        const response = await getRepository(PlanesEntity)
-        .createQueryBuilder("planes")
-        .getMany()
-        console.log(response);
-    }
+  async getUsuarios() {
+    const response = await getRepository(PlanesEntity)
+      .createQueryBuilder('planes')
+      .getMany();
+    console.log(response);
+  }
 }

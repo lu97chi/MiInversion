@@ -5,17 +5,16 @@ import { RendimientoEntity } from './rendimiento.entity';
 import { RendimientoService } from './rendimiento.service';
 
 @Crud({
-    model: {
-        type: RendimientoEntity
-    }
+  model: {
+    type: RendimientoEntity,
+  },
 })
-
 @Controller('rendimiento')
 export class RendimientoController {
-    constructor(public service: RendimientoService){}
+  constructor(public service: RendimientoService) {}
 
-    @Get('usuarios')
-    getUsuarios() {
-        return this.service.getUsuarios()
-    }
+  @Get('usuarios')
+  getUsuarios() {
+    return this.service.getUsuarios();
+  }
 }

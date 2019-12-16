@@ -5,8 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { RendimientoEntity } from './rendimiento.entity';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([RendimientoEntity])],
-    providers: [RendimientoService],
-    controllers: [RendimientoController]
+  imports: [TypeOrmModule.forFeature([RendimientoEntity])],
+  providers: [RendimientoService],
+  controllers: [RendimientoController],
 })
 export class RedimientoModule {}

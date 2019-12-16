@@ -6,7 +6,7 @@ import { PokemonEntity } from './pokemon.entity';
 
 @Injectable()
 export class PokemonService extends TypeOrmCrudService<PokemonEntity> {
-    constructor(@InjectRepository(PokemonEntity) repo) {
-        super(repo)
-    }
+  constructor(@InjectRepository(PokemonEntity) repo) {
+    super(repo);
+  }
 }

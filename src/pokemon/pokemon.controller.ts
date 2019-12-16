@@ -4,11 +4,10 @@ import { PokemonService } from './pokemon.service';
 import { PokemonEntity } from './pokemon.entity';
 
 @Crud({
-    model: {
-        type: PokemonEntity
-    }
+  model: {
+    type: PokemonEntity,
+  },
 })
-
 @Controller('pokemon')
 export class PokemonController {
   constructor(public service: PokemonService) {}

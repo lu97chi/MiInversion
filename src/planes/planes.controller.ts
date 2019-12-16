@@ -4,17 +4,16 @@ import { PlanesService } from './planes.service';
 import { PlanesEntity } from './planes.entity';
 
 @Crud({
-    model: {
-        type: PlanesEntity
-    }
+  model: {
+    type: PlanesEntity,
+  },
 })
-
 @Controller('planes')
 export class PlanesController {
-    constructor(private service: PlanesService){}
+  constructor(private service: PlanesService) {}
 
-    @Get('usuario/:agenteId')
-    planesUsuario(@Param('agenteId') agenteId: number) {
-        return this.service.planesUsuario(agenteId)
-    }
+  @Get('usuario/:agenteId')
+  planesUsuario(@Param('agenteId') agenteId: number) {
+    return this.service.planesUsuario(agenteId);
+  }
 }

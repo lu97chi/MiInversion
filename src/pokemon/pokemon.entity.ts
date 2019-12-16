@@ -1,17 +1,15 @@
-import { 
-    Entity, Column, PrimaryGeneratedColumn
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('pokemon')
 export class PokemonEntity {
-    @PrimaryGeneratedColumn('increment') id: number
-    
-    @Column('varchar', { length: 500, unique : true}) 
-    name: string
-    
-    @Column('varchar', { length: 500 })
-    type: string
+  @PrimaryGeneratedColumn('increment') id: number;
 
-    @Column('numeric')
-    pokedex: number
+  @Column('varchar', { length: 500, unique: true })
+  name: string;
+
+  @Column('varchar', { length: 500 })
+  type: string;
+
+  @Column('numeric')
+  pokedex: number;
 }
