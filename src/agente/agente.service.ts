@@ -28,7 +28,7 @@ export class AgenteService {
             const { firstname, id, lastname, username } = user;
             if (isUser) return { success: true, response: {
                 message: 'Acceso correcto',
-                data: { firstname, lastname, username }, 
+                data: { firstname, lastname, username, id }, 
                 access_token: this.jwtService.sign({firstname, id, lastname, username})
             } }
             return {success: false, response : "Contraseña incorrecta"}

@@ -7,7 +7,7 @@ import {
 export class PlanesEntity {
     @PrimaryGeneratedColumn('increment') id: number
     
-    @Column('varchar', { length: 100, unique : true}) 
+    @Column('varchar', { length: 100 }) 
     name: string
 
     @Column({type: 'decimal', precision: 14, scale: 3})
